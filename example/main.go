@@ -1,13 +1,12 @@
 package main
 
 import (
-	"fmt"
 	utils "github.com/salman-trimulabs/go-util"
 )
 
 func main(){
 	x :=  utils.Init{
-		"A", "B",
+		"docker://quay.io/buildah/stable", "~/Documents/test/",
 	}
 	x.CopyImageFromDockerRepository()
 }
