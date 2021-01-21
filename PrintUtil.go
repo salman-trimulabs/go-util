@@ -1,19 +1,36 @@
-package main
+package Utils
+
 import (
     "fmt"
     "os/exec"
 )
-// CopyImageFromDockerRepository return script path
-func CopyImageFromDockerRepository(imageSource string) (string) {
+// Init input values
+type Init struct {
+ imageSource, imageDest string
+}
+// CopyImageFromDockerRepository return script path response
+func (e *Init) CopyImageFromDockerRepository() (string) {
     fmt.Println("Started Downloading Image")
-    cmd, err := exec.Command("/bin/sh", "copy_image.sh", imageSource, "/Users/mam/Documents/test/sample").Output()
+    cmd, err := exec.Command("/bin/sh", "copy_image.sh", e.imageSource, e.imageDest).Output()
     if err != nil {
     fmt.Printf("error %s", err)
     }
     output := string(cmd)
+    fmt.Println(output)
     fmt.Println("Successfully Downloading Image")
     return output
 }
-func main() {
-    CopyImageFromDockerRepository("docker://quay.io/buildah/stable")
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
